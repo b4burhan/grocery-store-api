@@ -1,0 +1,15 @@
+{
+  "name": "grocery-store-api",
+  "version": "1.0.0",
+  "description": "grocery-store",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  }
+}

@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "b8f558fe-1d09-4f41-9726-625d9abb6ee1",
+		"name": "Grocery-Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test response status code for getting categories\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test that the response is valid JSON\r",
+									"pm.test(\"Response body is valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"// Custom test to check if the response is an array\r",
+									"pm.test(\"Response body is an array of categories\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test response status code for adding a category\r",
+									"pm.test(\"Status code is 201 Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// Test the response body contains a message\r",
+									"pm.test(\"Response body contains a success message\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"message\", \"Category added successfully\");\r",
+									"});\r",
+									"\r",
+									"//  Test response time\r",
+									"pm.test(\"Response time is within acceptable limits\", function () {\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 1000; // Maximum acceptable response time\r",
+									"    // Check if the actual response time falls within the defined range\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
+									"});\r",
+									"\r",
+									"// You can Ajust time limit according to you's "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"lll\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products by Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test response status code for getting products by category name\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test that the response is valid JSON\r",
+									"pm.test(\"Response body is valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"// Custom test to check if the response is an array\r",
+									"pm.test(\"Response body is an array of products\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"//  Test response time\r",
+									"pm.test(\"Response time is within acceptable limits\", function () {\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 1000; // Maximum acceptable response time\r",
+									"    // Check if the actual response time falls within the defined range\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
+									"});\r",
+									"\r",
+									"// You can Ajust time limit according to you's "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products/vagitable",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"vagitable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test response status code for adding a product\r",
+									"pm.test(\"Status code is 201 Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// Test the response body contains a message\r",
+									"pm.test(\"Response body contains a success message\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"message\", \"Product added successfully\");\r",
+									"});\r",
+									"\r",
+									"//  Test response time\r",
+									"pm.test(\"Response time is within acceptable limits\", function () {\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 1000; // Maximum acceptable response time\r",
+									"    // Check if the actual response time falls within the defined range\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
+									"});\r",
+									"\r",
+									"// You can Ajust time limit according to you's "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"car\",\r\n  \"category_id\": 4\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort products fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test response status code for sorting products by name\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test that the response is valid JSON\r",
+									"pm.test(\"Response body is valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"//  Test response time\r",
+									"pm.test(\"Response time is within acceptable limits\", function () {\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 1000; // Maximum acceptable response time\r",
+									"    // Check if the actual response time falls within the defined range\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
+									"});\r",
+									"\r",
+									"// You can Ajust time limit according to you's \r",
+									"\r",
+									"// Custom test to check if the response is an array\r",
+									"pm.test(\"Response body is an array of products sorted by name\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/sort/products/name",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"sort",
+								"products",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test response status code for getting all products\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test that the response is valid JSON\r",
+									"pm.test(\"Response body is valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"// Custom test to check if the response is an array of products\r",
+									"pm.test(\"Response body is an array of all products\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"\r",
+									"});\r",
+									"\r",
+									"// Test response time for getting all products\r",
+									"pm.test(\"Response time is within acceptable limits\", function () {\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 1000; // Maximum acceptable response time\r",
+									"    // Check if the actual response time falls within the defined range\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
+									"});\r",
+									"\r",
+									"// You can adjust the values of minResponseTime and maxResponseTime as needed.\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test response status code for sorting products by name\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test that the response is valid JSON\r",
+									"pm.test(\"Response body is valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"// Custom test to check if the products are sorted by name\r",
+									"pm.test(\"Products are sorted by name\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    \r",
+									"    // Loop through the array to compare adjacent product names\r",
+									"    for (let i = 0; i < jsonData.length - 1; i++) {\r",
+									"        pm.expect(jsonData[i].name).to.be.at.least(jsonData[i + 1].name);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//  Test response time\r",
+									"pm.test(\"Response time is within acceptable limits\", function () {\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 1000; // Maximum acceptable response time\r",
+									"    // Check if the actual response time falls within the defined range\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
+									"});\r",
+									"\r",
+									"// You can Ajust time limit according to you's "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/sort/products/byName/Onion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"sort",
+								"products",
+								"byName",
+								"Onion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
