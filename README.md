@@ -78,3 +78,13 @@ Then, you can run the Postman collection as follows:
 ```bash
 newman run Grocery_Store_postman_collection.json
 ```
+
+
+To create an ngrok tunnel, use the following commands:
+
+```bash
+ngrok config add-authtoken 2Xfplv1VYhSpz0seC9EJqRdlqzi_6Atx1vLYCfbZJsS23Nrdj
+ngrok http 3000
+```
+```
+
