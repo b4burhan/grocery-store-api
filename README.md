@@ -76,5 +76,5 @@ npm install -g newman
 Then, you can run the Postman collection as follows:
 
 ```bash
-newman run Grocery-Store.postman_collection.json
+newman run Grocery_Store_postman_collection.json
 ```
