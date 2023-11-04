@@ -11,6 +11,9 @@ To get started with the Grocery Store API, follow the steps below.
 - Node.js
 - SQLite (for local database)
 
+  ```npm install sqlite3
+  ```
+
 ### Installation
 
 1. Clone this repository to your local machine.
