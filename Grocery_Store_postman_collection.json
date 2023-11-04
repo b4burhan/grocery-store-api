@@ -350,12 +350,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/products",
-							"protocol": "http",
+							"raw": "https://faab-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/products",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"faab-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"ngrok",
+								"io"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"products"
@@ -410,12 +411,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/sort/products/byName/Onion",
-							"protocol": "http",
+							"raw": "https://faab-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/sort/products/byName/Onion",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"faab-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"ngrok",
+								"io"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"sort",
