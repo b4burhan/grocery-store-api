@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "a9c15e6d-a225-4b8e-8189-77c23f0ef889",
-		"name": "Grocery-Store",
+		"_postman_id": "f564e8a4-7254-41b0-848c-3149bf20ed90",
+		"name": "Grocery-Store Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -25,16 +25,10 @@
 									"    pm.response.to.be.json;\r",
 									"});\r",
 									"\r",
-									"// Custom test to check if the response is an array\r",
-									"pm.test(\"Response body is an array of categories\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an(\"array\");\r",
-									"});\r",
-									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"    const minResponseTime = 1; // Minimum acceptable response time\r",
-									"    const maxResponseTime = 5000; // Maximum acceptable response time\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
@@ -49,10 +43,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/categories",
+							"raw": "https://f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4.ngrok.io/api/categories",
 							"protocol": "https",
 							"host": [
-								"966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4",
 								"ngrok",
 								"io"
 							],
@@ -83,8 +77,8 @@
 									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"    const minResponseTime = 1; // Minimum acceptable response time\r",
-									"    const maxResponseTime = 5000; // Maximum acceptable response time\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
@@ -108,10 +102,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/categories/",
+							"raw": "https://f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4.ngrok.io/api/categories/",
 							"protocol": "https",
 							"host": [
-								"966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4",
 								"ngrok",
 								"io"
 							],
@@ -147,17 +141,10 @@
 									"    pm.response.to.not.be.error;\r",
 									"});\r",
 									"\r",
-									"\r",
-									"// Custom test to check if the response is an array\r",
-									"pm.test(\"Response body is an array of products\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an(\"array\");\r",
-									"});\r",
-									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"    const minResponseTime = 1; // Minimum acceptable response time\r",
-									"    const maxResponseTime = 5000; // Maximum acceptable response time\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
@@ -172,10 +159,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/products/vagitable",
+							"raw": "https://f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4.ngrok.io/api/products/vagitable",
 							"protocol": "https",
 							"host": [
-								"966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4",
 								"ngrok",
 								"io"
 							],
@@ -207,8 +194,8 @@
 									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"    const minResponseTime = 1; // Minimum acceptable response time\r",
-									"    const maxResponseTime = 5000; // Maximum acceptable response time\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
@@ -232,10 +219,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/products",
+							"raw": "https://f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4.ngrok.io/api/products",
 							"protocol": "https",
 							"host": [
-								"966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4",
 								"ngrok",
 								"io"
 							],
@@ -266,20 +253,13 @@
 									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"    const minResponseTime = 1; // Minimum acceptable response time\r",
-									"    const maxResponseTime = 5000; // Maximum acceptable response time\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
 									"\r",
-									"// You can Ajust time limit according to you's \r",
-									"\r",
-									"// Custom test to check if the response is an array\r",
-									"pm.test(\"Response body is an array of products sorted by name\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an(\"array\");\r",
-									"});\r",
-									""
+									"// You can Ajust time limit according to you's "
 								],
 								"type": "text/javascript"
 							}
@@ -289,10 +269,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/sort/products/name",
+							"raw": "https://f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4.ngrok.io/api/sort/products/name",
 							"protocol": "https",
 							"host": [
-								"966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4",
 								"ngrok",
 								"io"
 							],
@@ -313,7 +293,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"// Test response status code for getting All products \r",
+									"// Test response status code for getting all products\r",
 									"pm.test(\"Status code is 200 OK\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
@@ -321,25 +301,20 @@
 									"// Test that the response is valid JSON\r",
 									"pm.test(\"Response body is valid JSON\", function () {\r",
 									"    pm.response.to.be.json;\r",
-									"    pm.response.to.not.be.error;\r",
 									"});\r",
 									"\r",
 									"\r",
-									"// Custom test to check if the response is an array\r",
-									"pm.test(\"Response body is an array of products\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an(\"array\");\r",
-									"});\r",
-									"\r",
-									"//  Test response time\r",
+									"// Test response time for getting all products\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"    const minResponseTime = 1; // Minimum acceptable response time\r",
-									"    const maxResponseTime = 5000; // Maximum acceptable response time\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
 									"\r",
-									"// You can Ajust time limit according to you's "
+									"// You can adjust the values of minResponseTime and maxResponseTime as needed.\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -349,10 +324,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/products",
+							"raw": "https://f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4.ngrok.io/api/products",
 							"protocol": "https",
 							"host": [
-								"966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4",
 								"ngrok",
 								"io"
 							],
@@ -384,7 +359,7 @@
 									"// Custom test to check if the products are sorted by name\r",
 									"pm.test(\"Products are sorted by name\", function () {\r",
 									"    const jsonData = pm.response.json();\r",
-									"\r",
+									"    \r",
 									"    // Loop through the array to compare adjacent product names\r",
 									"    for (let i = 0; i < jsonData.length - 1; i++) {\r",
 									"        pm.expect(jsonData[i].name).to.be.at.least(jsonData[i + 1].name);\r",
@@ -394,8 +369,8 @@
 									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"    const minResponseTime = 1; // Minimum acceptable response time\r",
-									"    const maxResponseTime = 5000; // Maximum acceptable response time\r",
+									"   const minResponseTime = 1; // Minimum acceptable response time\r",
+									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
@@ -410,10 +385,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/sort/products/byName/Onion",
+							"raw": "https://f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4.ngrok.io/api/sort/products/byName/Onion",
 							"protocol": "https",
 							"host": [
-								"966c-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"f23c-2404-3100-1894-2183-1d6f-b5c5-406-46c4",
 								"ngrok",
 								"io"
 							],

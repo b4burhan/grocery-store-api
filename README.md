@@ -67,6 +67,14 @@ To get started with the Grocery Store API, follow the steps below.
 
 ## Testing
 
+To create an ngrok tunnel, use the following commands:
+
+## isnstall ngrok
+
+```bash
+ngrok http 3000
+```
+
 To run automated tests, you can use Newman. Make sure you have Newman installed globally:
 
 ```bash
@@ -78,13 +86,3 @@ Then, you can run the Postman collection as follows:
 ```bash
 newman run Grocery_Store_postman_collection.json
 ```
-
-
-To create an ngrok tunnel, use the following commands:
-
-```bash
-ngrok config add-authtoken 2Xfplv1VYhSpz0seC9EJqRdlqzi_6Atx1vLYCfbZJsS23Nrdj
-ngrok http 3000
-```
-```
-
