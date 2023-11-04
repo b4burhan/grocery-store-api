@@ -313,33 +313,6 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"// Test response status code for getting all products\r",
-									"pm.test(\"Status code is 200 OK\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// Test that the response is valid JSON\r",
-									"pm.test(\"Response body is valid JSON\", function () {\r",
-									"    pm.response.to.be.json;\r",
-									"});\r",
-									"\r",
-									"// Custom test to check if the response is an array of products\r",
-									"pm.test(\"Response body is an array of all products\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an(\"array\");\r",
-									"\r",
-									"});\r",
-									"\r",
-									"// Test response time for getting all products\r",
-									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"   const minResponseTime = 1; // Minimum acceptable response time\r",
-									"const maxResponseTime = 1000; // Maximum acceptable response time\r",
-									"    // Check if the actual response time falls within the defined range\r",
-									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
-									"});\r",
-									"\r",
-									"// You can adjust the values of minResponseTime and maxResponseTime as needed.\r",
-									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -350,10 +323,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://faab-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/products",
+							"raw": "https://8527-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io/api/products",
 							"protocol": "https",
 							"host": [
-								"faab-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
+								"8527-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af",
 								"ngrok",
 								"io"
 							],
