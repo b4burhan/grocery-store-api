@@ -82,9 +82,12 @@ newman run Grocery_Store_postman_collection.json
 
 To create an ngrok tunnel, use the following commands:
 
-<!-- ```bash
+```bash
 ngrok config add-authtoken 2Xfplv1VYhSpz0seC9EJqRdlqzi_6Atx1vLYCfbZJsS23Nrdj
 ngrok http 3000
 ```
-``` -->
+```
 
+
+https://8527-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io
+https://faab-2404-3100-1880-348d-a8e8-1bf1-f8ca-c1af.ngrok.io
