@@ -9,9 +9,11 @@ To get started with the Grocery Store API, follow the steps below.
 ### Prerequisites
 
 - Node.js
+
 - SQLite (for local database)
 
   ```npm install sqlite3
+
   ```
 
 ### Installation
@@ -72,7 +74,10 @@ To get started with the Grocery Store API, follow the steps below.
 
 To create an ngrok tunnel, use the following commands:
 
-## isnstall ngrok
+## install ngrok then run this command
+
+After running the ngrok command, it will generate a public URL like "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io." Copy this URL and replace "http://localhost:3000" with it in your API endpoint.
+This change allows you to test your API using GitHub Actions. However, for other testing purposes (outside of GitHub Actions), you can still use "http://localhost:3000" with Postman and Newman without the need to run "ngrok http 3000." This method is specifically for integrating GitHub Actions with your API testing. And then export the postman file in the main directory with this name "Grocery_Store_postman_collection.json" then push your code to github it will be automatically start the Github Action.
 
 ```bash
 ngrok http 3000
