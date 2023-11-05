@@ -43,10 +43,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://149f-154-80-36-106.ngrok.io/api/categories",
+							"raw": "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io/api/categories",
 							"protocol": "https",
 							"host": [
-								"149f-154-80-36-106",
+								"58b2-2404-3100-1898-c080-29dc-29b9-f30-a792",
 								"ngrok",
 								"io"
 							],
@@ -102,10 +102,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://149f-154-80-36-106.ngrok.io/api/categories/",
+							"raw": "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io/api/categories/",
 							"protocol": "https",
 							"host": [
-								"149f-154-80-36-106",
+								"58b2-2404-3100-1898-c080-29dc-29b9-f30-a792",
 								"ngrok",
 								"io"
 							],
@@ -159,10 +159,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://149f-154-80-36-106.ngrok.io/api/products/vagitable",
+							"raw": "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io/api/products/vagitable",
 							"protocol": "https",
 							"host": [
-								"149f-154-80-36-106",
+								"58b2-2404-3100-1898-c080-29dc-29b9-f30-a792",
 								"ngrok",
 								"io"
 							],
@@ -219,10 +219,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://149f-154-80-36-106.ngrok.io/api/products",
+							"raw": "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io/api/products",
 							"protocol": "https",
 							"host": [
-								"149f-154-80-36-106",
+								"58b2-2404-3100-1898-c080-29dc-29b9-f30-a792",
 								"ngrok",
 								"io"
 							],
@@ -269,10 +269,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://149f-154-80-36-106.ngrok.io/api/sort/products/name",
+							"raw": "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io/api/sort/products/name",
 							"protocol": "https",
 							"host": [
-								"149f-154-80-36-106",
+								"58b2-2404-3100-1898-c080-29dc-29b9-f30-a792",
 								"ngrok",
 								"io"
 							],
@@ -324,10 +324,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://149f-154-80-36-106.ngrok.io/api/products",
+							"raw": "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io/api/products",
 							"protocol": "https",
 							"host": [
-								"149f-154-80-36-106",
+								"58b2-2404-3100-1898-c080-29dc-29b9-f30-a792",
 								"ngrok",
 								"io"
 							],
@@ -359,7 +359,7 @@
 									"// Custom test to check if the products are sorted by name\r",
 									"pm.test(\"Products are sorted by name\", function () {\r",
 									"    const jsonData = pm.response.json();\r",
-									"    \r",
+									"\r",
 									"    // Loop through the array to compare adjacent product names\r",
 									"    for (let i = 0; i < jsonData.length - 1; i++) {\r",
 									"        pm.expect(jsonData[i].name).to.be.at.least(jsonData[i + 1].name);\r",
@@ -369,8 +369,8 @@
 									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"   const minResponseTime = 1; // Minimum acceptable response time\r",
-									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
+									"    const minResponseTime = 1; // Minimum acceptable response time\r",
+									"    const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
@@ -385,10 +385,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://149f-154-80-36-106.ngrok.io/api/sort/products/byName/Onion",
+							"raw": "https://58b2-2404-3100-1898-c080-29dc-29b9-f30-a792.ngrok.io/api/sort/products/byName/Onion",
 							"protocol": "https",
 							"host": [
-								"149f-154-80-36-106",
+								"58b2-2404-3100-1898-c080-29dc-29b9-f30-a792",
 								"ngrok",
 								"io"
 							],
