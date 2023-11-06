@@ -1,20 +1,48 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const sqlite3 = require('sqlite3').verbose();
+const multer = require('multer');
+const path = require('path');
+app.use('/uploads', express.static('uploads'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'Product List.html'));
+});
+app.get('/add-product', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'AddProduct.html'));
+});
+app.get('/add-categories', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'AddCategory.html'));
+});
+app.get('/backupTable', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'backupTable.html'));
+});
+// 
+const db = new sqlite3.Database('grocery_store.db');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const db = require('./db'); // Import the SQLite database instance
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname);
+    },
+});
 
-app.post('/api/categories', (req, res) => {
+const upload = multer({ storage: storage });
+
+app.post('/api/categories', upload.single('image'), (req, res) => {
     const { name } = req.body;
 
-    // Insert the new category into the 'categories' table
     const stmt = db.prepare('INSERT INTO categories (name) VALUES (?)');
     stmt.run(name, err => {
         if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Internal server error' });
+            handleDatabaseError(err, res);
             return;
         }
         res.status(201).json({ message: 'Category added successfully' });
@@ -22,66 +50,63 @@ app.post('/api/categories', (req, res) => {
     stmt.finalize();
 });
 
+// Retrieve all categories
 app.get('/api/categories', (req, res) => {
-    // Retrieve categories from the 'categories' table
     db.all('SELECT * FROM categories', (err, categories) => {
         if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Internal server error' });
+            handleDatabaseError(err, res);
             return;
         }
         res.json(categories);
     });
 });
+app.post('/api/products', upload.single('image'), (req, res) => {
+    const { name, category_id, price } = req.body;
+    const image = req.file ? req.file.filename : null; // Store the image file name
 
+    db.serialize(() => {
+        db.run("BEGIN TRANSACTION"); // Start a database transaction
 
+        const stmt = db.prepare('INSERT INTO products (name, category_id, image, price) VALUES (?, ?, ?, ?)');
 
-// adding a product
-app.post('/api/products', (req, res) => {
-    const { name, category_id } = req.body;
-
-    // Insert the new product into the 'products' table
-    const stmt = db.prepare('INSERT INTO products (name, category_id) VALUES (?, ?)');
-    stmt.run(name, category_id, err => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Internal server error' });
-            return;
-        }
-        res.status(201).json({ message: 'Product added successfully' });
+        stmt.run(name, category_id, image, price, err => {
+            if (err) {
+                db.run("ROLLBACK"); // Roll back the transaction in case of an error
+                handleDatabaseError(err, res);
+            } else {
+                db.run("COMMIT"); // Commit the transaction if the insertion is successful
+                res.status(201).json({ message: 'Product added successfully' });
+            }
+            stmt.finalize();
+        });
     });
-    stmt.finalize();
 });
 
-// GET endpoint to retrieve products within a category by name
+// Retrieve products within a category by name
 app.get('/api/products/:categoryName', (req, res) => {
     const { categoryName } = req.params;
 
-    // Retrieve products from the 'products' table for a specific category name
     db.all('SELECT * FROM products WHERE category_id IN (SELECT id FROM categories WHERE name = ?)', categoryName, (err, products) => {
         if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Internal server error' });
+            handleDatabaseError(err, res);
             return;
         }
         res.json(products);
     });
 });
 
-// GET endpoint to retrieve all products
-app.get('/api/products', (req, res) => {
-    // Retrieve all products from the 'products' table
-    db.all('SELECT * FROM products', (err, products) => {
+app.get('/api/products/byName/:productName', (req, res) => {
+    const { productName } = req.params;
+
+    // Replace 'products' with the actual name of your products table
+    db.all('SELECT * FROM products WHERE name = ?', productName, (err, products) => {
         if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Internal server error' });
+            handleDatabaseError(err, res);
             return;
         }
         res.json(products);
     });
 });
-
-
 
 
 // GET endpoint to sort products based on a sorting option
@@ -104,28 +129,23 @@ app.get('/api/sort/products/:sortField', (req, res) => {
     }
 });
 
-// GET endpoint to sort products based on a product name
-app.get('/api/sort/products/byName/:productName', (req, res) => {
-    const { productName } = req.params;
-
-    // Sort the products based on the requested product name
-    const query = `SELECT * FROM products WHERE name = ?`;
-
-    db.all(query, productName, (err, products) => {
+// Retrieve all products
+app.get('/api/products', (req, res) => {
+    db.all('SELECT name,price,image FROM products', (err, products) => {
         if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Internal server error' });
+            handleDatabaseError(err, res);
             return;
         }
         res.json(products);
     });
 });
 
-
+// Start the server
 app.listen(port, () => {
     console.log(`API server is running on http://localhost:${port}`);
 });
 
+// Close the database connection on SIGINT
 process.on('SIGINT', () => {
     db.close();
     process.exit();

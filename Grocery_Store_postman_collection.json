@@ -43,13 +43,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73.ngrok.io/api/categories",
-							"protocol": "https",
+							"raw": "http://localhost:3000/api/categories",
+							"protocol": "http",
 							"host": [
-								"1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"categories"
@@ -94,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"lll\"\r\n}\r\n",
+							"raw": "{\r\n  \"name\": \"chips\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -102,13 +101,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73.ngrok.io/api/categories/",
-							"protocol": "https",
+							"raw": "http://localhost:3000/api/categories/",
+							"protocol": "http",
 							"host": [
-								"1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"categories",
@@ -159,13 +157,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73.ngrok.io/api/products/vagitable",
-							"protocol": "https",
+							"raw": "http://localhost:3000/api/products/vagitable",
+							"protocol": "http",
 							"host": [
-								"1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"products",
@@ -206,12 +203,36 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"car\",\r\n  \"category_id\": 4\r\n}\r\n",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "orange",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": " image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "price",
+									"value": "180",
+									"type": "text"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,13 +240,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73.ngrok.io/api/products",
-							"protocol": "https",
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
 							"host": [
-								"1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"products"
@@ -243,7 +263,7 @@
 								"exec": [
 									"// Test response status code for sorting products by name\r",
 									"pm.test(\"Status code is 200 OK\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(200); // Change the expected status code if necessary\r",
 									"});\r",
 									"\r",
 									"// Test that the response is valid JSON\r",
@@ -253,8 +273,8 @@
 									"\r",
 									"//  Test response time\r",
 									"pm.test(\"Response time is within acceptable limits\", function () {\r",
-									"   const minResponseTime = 1; // Minimum acceptable response time\r",
-									"const maxResponseTime = 10000; // Maximum acceptable response time\r",
+									"    const minResponseTime = 1; // Minimum acceptable response time\r",
+									"    const maxResponseTime = 10000; // Maximum acceptable response time\r",
 									"    // Check if the actual response time falls within the defined range\r",
 									"    pm.expect(pm.response.responseTime).to.be.within(minResponseTime, maxResponseTime);\r",
 									"});\r",
@@ -269,18 +289,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73.ngrok.io/api/sort/products/name",
-							"protocol": "https",
+							"raw": "http://localhost:3000/api/sort/products/category_id",
+							"protocol": "http",
 							"host": [
-								"1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"sort",
 								"products",
-								"name"
+								"category_id"
 							]
 						}
 					},
@@ -324,13 +343,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73.ngrok.io/api/products",
-							"protocol": "https",
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
 							"host": [
-								"1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"products"
@@ -357,14 +375,17 @@
 									"});\r",
 									"\r",
 									"// Custom test to check if the products are sorted by name\r",
+									"// Custom test to check if the products are sorted by name\r",
 									"pm.test(\"Products are sorted by name\", function () {\r",
 									"    const jsonData = pm.response.json();\r",
 									"\r",
 									"    // Loop through the array to compare adjacent product names\r",
 									"    for (let i = 0; i < jsonData.length - 1; i++) {\r",
-									"        pm.expect(jsonData[i].name).to.be.at.least(jsonData[i + 1].name);\r",
+									"        // Compare product names as strings (case-insensitive comparison)\r",
+									"        pm.expect(jsonData[i].name.toLowerCase()).to.be.at.most(jsonData[i + 1].name.toLowerCase());\r",
 									"    }\r",
 									"});\r",
+									"\r",
 									"\r",
 									"\r",
 									"//  Test response time\r",
@@ -385,19 +406,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73.ngrok.io/api/sort/products/byName/Onion",
-							"protocol": "https",
+							"raw": "http://localhost:3000/api/products/byName/Banana",
+							"protocol": "http",
 							"host": [
-								"1c09-2404-3100-1898-c080-4c86-81d7-559d-7c73",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
-								"sort",
 								"products",
 								"byName",
-								"Onion"
+								"Banana"
 							]
 						}
 					},

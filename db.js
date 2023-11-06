@@ -17,7 +17,8 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
       category_id INTEGER,
-      FOREIGN KEY (category_id) REFERENCES categories(id)
+      FOREIGN KEY (category_id) REFERENCES categories(id),
+      image TEXT
     )
   `);
 });

@@ -31,7 +31,9 @@ To get started with the Grocery Store API, follow the steps below.
    The API server will run at `http://localhost:3000`.
 
 ## API Endpoints
-
+<!-- http://localhost:3000/add-product
+http://localhost:3000/add-categories
+ -->
 ### Categories
 
 - **GET /api/categories**

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product List</title>
+    <style>
+        #pageNumber {
+            width: 40px;
+        }
+
+        #pagination {
+            text-align: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column1 {
+            float: left;
+            width: 30%;
+            padding: 5px;
+        }
+
+        .row {
+            margin-left: 50px;
+            margin-right: -5px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+            padding-left: 60px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+        }
+        tr {
+            text-align: left;
+        }
+
+        .horiLine {
+            border-bottom: 1px solid #524848;
+            text-align: left;
+        }
+
+        .horiLine1 {
+            padding: 16px;
+            border-bottom: 1px solid #524848;
+            text-align: right;
+
+        }
+
+        td {
+            padding: 10px;
+            position: relative;
+        }
+
+        .btn {
+            position: absolute;
+            top: 5px;
+            right: 0;
+            left: 200px;
+        }
+
+        .btn button {
+            cursor: pointer;
+        }
+
+        .btnW {
+            min-width: 30px;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row heading">
+        <div class="column">
+            <div id="pagination">
+                <button id="prevPage">
+                    < </button>
+                        <input type="number" id="pageNumber" min="1">
+                        <span id="totalPages"> /</span>
+                        <button id="nextPage">></button>
+            </div>
+        </div>
+        <div class="column">
+            <label for="cars">Sort : </label>
+            <select style="width: 200px;" name="cars" id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column1">
+            <table id="categoryTable">
+                <tr id="categoryTableBody">
+                </tr>
+            </table>
+        </div>
+        <div class="column">
+            <table class="table-fill">
+                <tbody class="table-hover" id="productTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const productsPerPage = 2;
+        let products = [];
+        let currentPage = 1;
+        let categoriName;
+
+        function getCategory(data) {
+            categoriName = data;
+            console.log(data);
+            loadProducts();
+        }
+
+        function loadProducts() {
+            fetch(`http://localhost:3000/api/products/${categoriName}`)
+                .then(response => response.json())
+                .then(data => {
+                    products = data;
+                    displayProducts(currentPage);
+                })
+                .catch(error => console.error(error));
+        }
+        function displayProducts(page) {
+            const productTableBody = document.getElementById('productTableBody');
+            productTableBody.innerHTML = '';
+
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToDisplay = products.slice(startIndex, endIndex);
+
+            productsToDisplay.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td class="horiLine"> <h3><b>${product.name}</b></h3><br>${product.price} kr</td>
+              <td class="horiLine1">${product.image ? `<img src="http://localhost:3000/uploads/${product.image}" alt="Product Image" width="100">` : 'No Image'}</td>
+                `;
+                productTableBody.appendChild(row);
+            });
+
+            const totalPages = Math.ceil(products.length / productsPerPage);
+            document.getElementById('totalPages').textContent = `/ ${totalPages}`;
+            document.getElementById('pageNumber').value = currentPage;
+        }
+
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayProducts(currentPage);
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            if (currentPage < Math.ceil(products.length / productsPerPage)) {
+                currentPage++;
+                displayProducts(currentPage);
+            }
+        });
+
+        document.getElementById('pageNumber').addEventListener('change', () => {
+            const pageNumber = parseInt(document.getElementById('pageNumber').value);
+            if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= Math.ceil(products.length / productsPerPage)) {
+                currentPage = pageNumber;
+                displayProducts(currentPage);
+            }
+        });
+
+        function loadCategories() {
+            fetch('http://localhost:3000/api/categories')
+                .then(response => response.json())
+                .then(data => {
+                    displayCategories(data);
+                })
+                .catch(error => console.error(error));
+        }
+
+        function displayCategories(categories) {
+            const categoryTableBody = document.getElementById('categoryTableBody');
+            categoryTableBody.innerHTML = '';
+
+            categories.forEach(category => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+        <td>${category.name} <div class="btn"><button onclick="getCategory('${category.name}')" class="btnW">+</button></div></td>
+    `;
+                categoryTableBody.appendChild(row);
+            });
+        }
+
+        loadCategories();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Add Product</title>
+  <!-- Add this script to your HTML file -->
+
+  <style>
+    input[type=file] {
+      max-width: 100%;
+      color: #444;
+      padding: 5px;
+      background: #fff;
+      /*  border-radius: 10px;*/
+      border: 1px solid #555;
+    }
+
+    body {
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /*input{ border: 1px solid; }*/
+    td:first-child {
+      width: 100px;
+    }
+
+    .field {
+      padding-left: 100px;
+      max-width: 300px;
+      height: 30px;
+    }
+
+    .image_field {
+      height: 25px;
+
+    }
+
+    .button-6 {
+      align-items: center;
+      background-color: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: .25rem;
+      box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+      box-sizing: border-box;
+      color: rgba(0, 0, 0, 0.85);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      justify-content: center;
+      line-height: 1.25;
+      margin: 0;
+      min-height: 3rem;
+      padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+      position: relative;
+      text-decoration: none;
+      transition: all 250ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: baseline;
+      width: auto;
+    }
+
+    .button-6:hover,
+    .button-6:focus {
+      border-color: rgba(0, 0, 0, 0.15);
+      box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .button-6:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-6:active {
+      background-color: #F0F0F1;
+      border-color: rgba(0, 0, 0, 0.15);
+      box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+      color: rgba(0, 0, 0, 0.65);
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <form action="http://localhost:3000/api/products" method="POST" enctype="multipart/form-data">
+    <fieldset>
+      <legend>
+        <h3>Add Product</h3>
+      </legend>
+      <table>
+        <tr>
+          <td> <label for="name">Product Name:</label></td>
+          <td> <input class="field" type="text" name="name" id="name" required></td>
+        </tr>
+        <!-- <tr>
+          <td> <label for="category_id">Category :</label></td>
+          <td> <input class="field" type="number" name="category_id" id="category_id" required></td>
+        </tr> -->
+        <tr>
+          <td><label for="category_id">Category:</label></td>
+          <td>
+            <select class="field" name="category_id" id="category_id" required>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="image">Product Image:</label></td>
+          <td> <input class="image_field" type="file" name="image" id="image" accept="image/*"></td>
+        </tr>
+        <tr>
+          <td><label for="price">Product Price:</label></td>
+          <td> <input class="field" type="number" id="image" name="price"></td>
+        </tr>
+        <tr>
+          <td><button class="button-6" role="button" type="submit">Submit</button></td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+  <script>
+    // Function to fetch categories and populate the select element
+    function loadCategories() {
+      const categorySelect = document.getElementById('category_id');
+
+      fetch('http://localhost:3000/api/categories')
+        .then(response => response.json())
+        .then(categories => {
+          // Clear existing options
+          categorySelect.innerHTML = '';
+
+          // Add a default option (optional)
+          const defaultOption = document.createElement('option');
+          defaultOption.value = '';
+          defaultOption.text = 'Select a category';
+          categorySelect.appendChild(defaultOption);
+          // Populate options from categories
+          categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.id; // Set the category ID as the option value
+            option.text = category.name; // Display the category name
+            categorySelect.appendChild(option);
+          });
+        })
+        .catch(error => console.error(error));
+    }
+
+    // Call the loadCategories function to populate the select element
+    loadCategories();
+  </script>
+
+</body>
+
+</html>
